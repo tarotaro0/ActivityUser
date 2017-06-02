@@ -36,10 +36,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         Intent intent = new Intent();
-        intent.setClassName("jp.ac.titech.itpro.sdl.activityprovider",
-                "jp.ac.titech.itpro.sdl.activityprovider.PublicActivity");
+        intent.setAction("itsp_intent_ex");
         intent.putExtra("request", request);
-        startActivityForResult(intent, MYREQCODE);
+        intent.setType("text/plain");
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, MYREQCODE);
+        }
+
     }
 
     @Override
